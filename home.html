@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text and Image Layout</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'BigersideExpanded';
+      src: url('./Bigerside Expanded.otf') format('opentype');
+    }
+
+    body {
+      background-color: #0b0a0f;
+      color: #f0f3f7;
+    }
+
+    .content {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .developerName {
+      font-family: 'BigersideExpanded';
+    }
+
+    .nav-list .nav-link {
+      text-decoration: none;
+      position: relative;
+      /* Necessary for the underline effect */
+      transition: transform 0.3s ease, color 0.3s ease;
+      /* Smooth zoom */
+    }
+
+    /* Hover effect */
+    .nav-list .nav-link:hover {
+      transform: scale(1.1);
+      /* Zoom effect */
+      color: #007bff;
+      /* Change color on hover */
+    }
+
+    /* Underline effect */
+    .nav-list .nav-link::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #007bff;
+      transition: width 0.3s ease;
+    }
+
+    .nav-list .nav-link:hover::after {
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container content">
+    <div class="row mx-3 w-100">
+      <div class="col-12 col-sm-6 d-flex align-items-center text-container" id="textContainer">
+        <div class="col-12">
+          <h1 class="developerName fs-1">John Rex Partoza</h1>
+          <h3>A Web Developer</h3>
+          <nav class="navigation mt-3">
+            <ul class="nav-list d-flex list-unstyled" id="navigationContent">
+              <li class="nav-item me-3">
+                <a href="#about-me" class="nav-link text-decoration-none">About Me</a>
+              </li>
+              <li class="nav-item mx-3">
+                <a href="#skills" class="nav-link text-decoration-none">Skills</a>
+              </li>
+              <li class="nav-item mx-3">
+                <a href="#projects" class="nav-link text-decoration-none">Projects</a>
+              </li>
+              <li class="nav-item mx-3">
+                <a href="#contact" class="nav-link text-decoration-none">Contact</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 d-flex justify-content-center">
+        <img src="homeImage.png" alt="Placeholder Image" style="max-width: 100%; height: auto;">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function adjustTextAlignment() {
+      const textContainer = document.getElementById('textContainer');
+      const navigation = document.getElementById('navigationContent');
+      if (window.innerWidth < 576) {
+        textContainer.style.textAlign = 'center';
+        navigation.style.justifyContent = 'center';
+      } else {
+        textContainer.style.textAlign = '';
+        navigation.style.justifyContent = '';
+      }
+    }
+
+    // Run on page load and when resizing the window
+    window.addEventListener('load', adjustTextAlignment);
+    window.addEventListener('resize', adjustTextAlignment);
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
